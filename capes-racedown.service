@@ -1,0 +1,23 @@
+[Unit]
+Description=Capes RaceDown — Sonarr/Radarr race-download daemon
+Documentation=https://github.com/mm333rr/capes-racedown
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=mbuntuadmin
+WorkingDirectory=/home/mbuntuadmin/Claude Scripts and Venvs/capes-racedown
+EnvironmentFile=/home/mbuntuadmin/Claude Scripts and Venvs/capes-racedown/.racedown.env
+ExecStart=/home/mbuntuadmin/Claude Scripts and Venvs/capes-racedown/venv/bin/uvicorn \
+    racedown:app \
+    --host 127.0.0.1 \
+    --port 6789 \
+    --log-level info
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=capes-racedown
+
+[Install]
+WantedBy=multi-user.target
