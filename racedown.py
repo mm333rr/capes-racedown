@@ -92,7 +92,7 @@ async def qbit_add(client: httpx.AsyncClient, url: str, category: str,
                               data={"urls": url, "category": category,
                                     "savepath": save_path, "tags": tags},
                               timeout=30)
-        return r.text.strip() == "Ok."
+        return r.status_code in (200, 202) or r.text.strip() == "Ok."
     except Exception as e:
         log.warning(f"qbit_add failed: {e}")
         return False
