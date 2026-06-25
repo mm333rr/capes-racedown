@@ -281,13 +281,13 @@ async def arr_get_candidates(client: httpx.AsyncClient, app_name: str,
     try:
         r = await client.get(f"{base}/api/v3/release",
                              params={id_param: media_id},
-                             headers=arr_headers(app_name), timeout=30)
+                             headers=arr_headers(app_name), timeout=90)
         if r.status_code != 200:
             log.warning(f"arr release search returned {r.status_code}")
             return []
         releases = r.json()
     except Exception as e:
-        log.warning(f"arr_get_candidates: {e}")
+        log.warning(f"arr_get_candidates [{type(e).__name__}]: {e}")
         return []
 
     candidates = []
