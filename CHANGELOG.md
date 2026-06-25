@@ -2,6 +2,21 @@
 
 All notable changes to capes-racedown will be documented in this file.
 
+## [0.2.0] — 2026-06-25
+
+### Fixed
+- qbit_add: accept HTTP 202 Accepted for magnets (was always False, extras never tracked)
+- Extra tracking: add all extras first, then single scaled wait before tag-query
+- Orphan sweep in declare_winner: delete race-tagged extras not in race_hashes
+- Startup sweep: strip stale race tags on daemon restart
+- Winner cleanup: remove race tag from winning torrent after race ends
+
+### Changed
+- Candidate scorer: secondary sort by size proximity to 700MB-2.5GB sweet spot
+- Candidate logging: top-5 at INFO with seeders/leechers/size
+- Extra logging: show torrent name when registering confirmed extras
+- Version: 0.1.0 -> 0.2.0
+
 ## [0.1.0] — 2026-06-25
 
 ### Added
