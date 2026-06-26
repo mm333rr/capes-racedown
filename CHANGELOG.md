@@ -2,6 +2,25 @@
 
 All notable changes to capes-racedown will be documented in this file.
 
+## [0.3.0] — 2026-06-25
+
+### Added
+- Radarr full support: /webhook/radarr now participates in race logic (was stubs-only)
+- Movie-specific size scoring: sweet spot 4GB–20GB (vs 700MB–2.5GB for TV)
+- Per-type race counts: TV_RACE_COUNT (default 3) and MOVIE_RACE_COUNT (default 2) env vars
+- Per-type min seeders: MOVIE_MIN_SEEDERS (default 3), TV_MIN_SEEDERS (default 0)
+- Title slug in race keys: {app}-{media_id}-{title-slug} format for readable logs
+- Filtered status endpoint: /status/{app_name} returns only races for that app
+- Status endpoint reports tv_race_count and movie_race_count separately
+
+### Fixed
+- Speed-win import: no longer prematurely calls arr_trigger_import when winner is still downloading; category handler picks it up on completion
+
+### Changed
+- _size_score is now app-aware (sonarr vs radarr routes to correct size window)
+- declare_winner takes win_by_completion bool — only import-triggers on completion wins
+- Webhook handler extracts movie title + year for Radarr race key generation
+
 ## [0.2.0] — 2026-06-25
 
 ### Fixed
