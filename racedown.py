@@ -26,8 +26,8 @@ v0.3.0 changes vs v0.2.0
   - Movie title surfaced in all race log lines
 
 Webhook URLs:
-  POST http://localhost:6789/webhook/sonarr
-  POST http://localhost:6789/webhook/radarr
+  POST http://localhost:6790/webhook/sonarr
+  POST http://localhost:6790/webhook/radarr
 
 Author: Capes homelab / mm333rr
 """
