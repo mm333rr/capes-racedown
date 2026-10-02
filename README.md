@@ -18,7 +18,7 @@ On every `on_grab` webhook event, capes-racedown:
 ## Architecture
 
 ```
-Sonarr/Radarr ──on_grab──▶ racedown (FastAPI :6789)
+Sonarr/Radarr ──on_grab──▶ racedown (FastAPI :6790)
                                 │
                     ┌───────────▼───────────┐
                     │  search arr releases  │
@@ -55,7 +55,7 @@ sudo systemctl status capes-racedown
 journalctl -u capes-racedown -f
 
 # Active races
-curl http://localhost:6789/status
+curl http://localhost:6790/status
 
 # Restart
 sudo systemctl restart capes-racedown
@@ -67,8 +67,8 @@ Configured automatically in Sonarr and Radarr → Settings → Connect → RaceD
 
 | App    | URL                                         |
 |--------|---------------------------------------------|
-| Sonarr | `http://172.24.0.1:6789/webhook/sonarr`     |
-| Radarr | `http://172.24.0.1:6789/webhook/radarr`     |
+| Sonarr | `http://172.24.0.1:6790/webhook/sonarr`     |
+| Radarr | `http://172.24.0.1:6790/webhook/radarr`     |
 
 The `172.24.0.1` IP is the mbuntu Docker gateway reachable from the `arr-net` bridge.
 
@@ -115,6 +115,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now capes-racedown
 
 # iptables (persist across reboots)
-sudo iptables -I INPUT -s 172.24.0.0/24 -p tcp --dport 6789 -j ACCEPT
+sudo iptables -I INPUT -s 172.24.0.0/24 -p tcp --dport 6790 -j ACCEPT
 sudo netfilter-persistent save
 ```

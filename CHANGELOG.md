@@ -2,6 +2,12 @@
 
 All notable changes to capes-racedown will be documented in this file.
 
+## [Unreleased] — 2026-10-01
+
+### Changed
+- Webhook port moved 6789 -> 6790. Why: UniFi OS Server (UniFi controller self-host, Council w-0924200852) publishes 6789 and cannot change its ports.
+- Live changes on mbuntu already applied: ~/bin/capes-racedown-start.sh (backup .bak-20261001), ufw rule 6790/tcp from 172.16.0.0/12 (6789 rule deleted), /etc/iptables/rules.v4 (backup .bak-20261001), Sonarr + Radarr notification id=2 URLs -> :6790 (both tests 200).
+
 ## [0.3.0] — 2026-06-25
 
 ### Added
